@@ -19,5 +19,14 @@ def select(id):
     if result is not None:
         author = Author(result['first_name'], result['last_name'], result['id'])
     return author
-    
+
+def select_all():
+    authors = []
+    sql = "SELECT * FROM authors"
+    results = run_sql(sql)
+
+    for row in results:
+        author = Author(row['first_name'], row['last_name'], row['id'])
+        authors.append(author)
+    return authors    
 
